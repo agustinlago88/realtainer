@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Hanken Grotesk', sans-serif; color: #17150F; background: #FBFAF7; -webkit-font-smoothing: antialiased; }
+  a { text-decoration: none; color: inherit; }
+  ::selection { background: #00755A; color: #fff; }
+  @keyframes rt-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @keyframes rt-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .rt-announcement { padding: 8px 12px !important; font-size: 11px !important; }
+    .rt-nav-container { padding: 12px 16px !important; flex-direction: column !important; gap: 12px !important; align-items: center !important; }
+    .rt-nav-menu { gap: 16px !important; flex-wrap: wrap !important; justify-content: center !important; }
+    .rt-nav-wa { padding: 8px 16px !important; font-size: 13px !important; }
+    
+    .rt-hero-section { padding: 32px 16px 24px !important; }
+    .rt-hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .rt-hero-title { font-size: 36px !important; line-height: 1.05 !important; margin-bottom: 16px !important; }
+    .rt-hero-desc { font-size: 16px !important; margin-bottom: 24px !important; max-width: 100% !important; }
+    .rt-hero-buttons { gap: 10px !important; }
+    .rt-hero-buttons a { width: 100% !important; justify-content: center !important; text-align: center !important; }
+    .rt-hero-stats { gap: 20px !important; margin-top: 24px !important; padding-top: 20px !important; justify-content: space-between !important; }
+    .rt-hero-stats > div > div:first-child { font-size: 24px !important; }
+    .rt-hero-img { height: 320px !important; }
+    .rt-hero-badge { bottom: 12px !important; left: 12px !important; padding: 10px 14px !important; }
+    .rt-hero-badge div:first-child { font-size: 11px !important; }
+    .rt-hero-badge div:last-child { font-size: 16px !important; }
+    
+    .rt-value-section { padding: 16px 16px 8px !important; }
+    .rt-value-grid { grid-template-columns: 1fr !important; }
+    
+    .rt-categories-section { padding: 48px 16px 24px !important; }
+    .rt-sec-header { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; margin-bottom: 24px !important; }
+    .rt-sec-header h2 { font-size: 28px !important; }
+    .rt-categories-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+    .rt-category-img { height: 220px !important; }
+    
+    .rt-featured-section { margin-top: 32px !important; }
+    .rt-featured-section > div { padding: 48px 16px !important; }
+    .rt-featured-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+    
+    .rt-steps-section { padding: 48px 16px 24px !important; }
+    .rt-steps-section h2 { font-size: 28px !important; }
+    .rt-steps-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+    
+    .rt-showroom-section { padding: 32px 16px !important; }
+    .rt-showroom-grid { grid-template-columns: 1fr !important; border-radius: 16px !important; }
+    .rt-showroom-left { padding: 32px 20px !important; }
+    .rt-showroom-left h2 { font-size: 28px !important; }
+    .rt-showroom-right { min-height: 280px !important; }
+    
+    .rt-faq-section { padding: 48px 16px !important; }
+    .rt-faq-title { font-size: 28px !important; }
+    .rt-faq-section button { padding: 16px 4px !important; }
+    .rt-faq-section button span:first-child { font-size: 16px !important; }
+    
+    .rt-cta-section > div { padding: 48px 16px !important; }
+    .rt-cta-container { flex-direction: column !important; text-align: center !important; gap: 20px !important; }
+    .rt-cta-container h2 { font-size: 28px !important; }
+    .rt-cta-container a { width: 100% !important; justify-content: center !important; }
+    
+    .rt-footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding: 48px 16px 32px !important; }
+  }
+</style>
+</helmet>
+
+<div style="min-height: 100vh;">
+
+  <!-- announcement -->
+  <div class="rt-announcement" style="background: #17150F; color: #FBFAF7; font-size: 13px; letter-spacing: 0.04em; text-align: center; padding: 9px 16px; font-weight: 500;">
+    Showroom abierto · Lunes a Sábados de 9 a 20 hs · Envío a todo el país
+  </div>
+
+  <!-- nav -->
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(251,250,247,0.86); backdrop-filter: blur(12px); border-bottom: 1px solid #E7E1D6;">
+    <div class="rt-nav-container" style="max-width: 1240px; margin: 0 auto; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between;">
+      <a href="Inicio.dc.html" style="display: flex; align-items: center;">
+        <img src="realtainer-logo.png" alt="Real Tainer" style="height: 56px; width: auto; display: block;">
+      </a>
+      <nav class="rt-nav-menu" style="display: flex; align-items: center; gap: 34px;">
+        <a href="Inicio.dc.html" style="font-size: 15px; font-weight: 600;">Inicio</a>
+        <a href="Productos.dc.html" style="font-size: 15px; font-weight: 500; color: #6B655A;" style-hover="color:#17150F">Productos</a>
+        <a href="#showroom" style="font-size: 15px; font-weight: 500; color: #6B655A;" style-hover="color:#17150F">Showroom</a>
+        <a href="Contacto.dc.html" style="font-size: 15px; font-weight: 500; color: #6B655A;" style-hover="color:#17150F">Contacto</a>
+        <a class="rt-nav-wa" href="https://wa.me/5491123958790?text=Hola%20Real%20Tainer%2C%20quiero%20informaci%C3%B3n" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: #17150F; color: #FBFAF7; padding: 11px 20px; border-radius: 100px; font-size: 14px; font-weight: 600;" style-hover="background:#00755A">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.992zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.693.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
+          WhatsApp
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section class="rt-hero-section" style="max-width: 1240px; margin: 0 auto; padding: 72px 32px 40px;">
+    <div class="rt-hero-grid" style="display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;">
+      <div>
+        <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #00755A; margin-bottom: 24px;">
+          <span style="width: 24px; height: 1px; background: #B59B4A;"></span> Casas contenedor · llave en mano
+        </div>
+        <h1 class="rt-hero-title" style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 62px; line-height: 0.98; letter-spacing: -0.03em; margin: 0 0 24px;">
+          Tu casa, lista<br>para habitar.
+        </h1>
+        <p class="rt-hero-desc" style="font-size: 19px; line-height: 1.5; color: #5A554B; max-width: 460px; margin: 0 0 36px;">
+          Construcción ágil, ecológica y sin las complicaciones de una obra tradicional. Modelos desde 15 a 60 m², entregados en todo el país.
+        </p>
+        <div class="rt-hero-buttons" style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a href="Productos.dc.html" style="display: inline-flex; align-items: center; gap: 10px; background: #00755A; color: #FBFAF7; padding: 16px 28px; border-radius: 100px; font-size: 16px; font-weight: 600;" style-hover="background:#005A45">
+            Ver modelos y precios
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="Contacto.dc.html" style="display: inline-flex; align-items: center; gap: 10px; background: transparent; color: #17150F; padding: 16px 26px; border-radius: 100px; font-size: 16px; font-weight: 600; border: 1.5px solid #D8D1C5;" style-hover="border-color:#17150F">
+            Pedir presupuesto
+          </a>
+        </div>
+        <div class="rt-hero-stats" style="display: flex; gap: 40px; margin-top: 48px; padding-top: 32px; border-top: 1px solid #E7E1D6;">
+          <div>
+            <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em;">11</div>
+            <div style="font-size: 13px; color: #8A8478; margin-top: 2px;">modelos disponibles</div>
+          </div>
+          <div>
+            <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em;">60<span style="font-size: 18px;">m²</span></div>
+            <div style="font-size: 13px; color: #8A8478; margin-top: 2px;">hasta</div>
+          </div>
+          <div>
+            <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em;">$0</div>
+            <div style="font-size: 13px; color: #8A8478; margin-top: 2px;">envío gratis</div>
+          </div>
+        </div>
+      </div>
+      <div class="rt-hero-img-col" style="position: relative;">
+        <img class="rt-hero-img" src="https://dcdn-us.mitiendanube.com/stores/002/165/507/products/60-frente-04aedc1bbbeb9df23f17187647287857-1024-1024.webp" alt="Tainer 60 m² Premium" style="width: 100%; height: 540px; display: block; object-fit: cover; border-radius: 20px;">
+        <div class="rt-hero-badge" style="position: absolute; bottom: 22px; left: 22px; background: rgba(251,250,247,0.94); backdrop-filter: blur(8px); border-radius: 14px; padding: 14px 18px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);">
+          <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #00755A; font-weight: 700;">Tainer 60 m² Premium</div>
+          <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 20px; margin-top: 2px;">desde USD $47.900</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- value strip -->
+  <section class="rt-value-section" style="max-width: 1240px; margin: 0 auto; padding: 28px 32px 8px;">
+    <div class="rt-value-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #E7E1D6; border: 1px solid #E7E1D6; border-radius: 16px; overflow: hidden;">
+      <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="4">
+        <div style="background: #FBFAF7; padding: 26px 24px;">
+          <div style="color: #00755A; margin-bottom: 12px;">{{ b.icon }}</div>
+          <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 4px;">{{ b.title }}</div>
+          <div style="font-size: 14px; color: #8A8478; line-height: 1.45;">{{ b.text }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- categories -->
+  <section class="rt-categories-section" style="max-width: 1240px; margin: 0 auto; padding: 80px 32px 40px;">
+    <div class="rt-sec-header" style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 34px;">
+      <div>
+        <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #00755A; margin-bottom: 10px;">Categorías</div>
+        <h2 style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 38px; letter-spacing: -0.02em; margin: 0;">Elegí tu espacio</h2>
+      </div>
+      <a href="Productos.dc.html" style="font-size: 15px; font-weight: 600; color: #00755A; display: inline-flex; align-items: center; gap: 6px;" style-hover="gap:10px">Ver todo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="rt-categories-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+      <sc-for list="{{ categories }}" as="c" hint-placeholder-count="3">
+        <a href="{{ c.href }}" style="display: block; border-radius: 18px; overflow: hidden; border: 1px solid #E7E1D6; background: #fff;" style-hover="border-color:#00755A">
+          <img class="rt-category-img" src="{{ c.img }}" alt="{{ c.name }}" style="width: 100%; height: 280px; display: block; object-fit: cover;">
+          <div style="padding: 22px 24px 24px;">
+            <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.01em;">{{ c.name }}</div>
+            <div style="font-size: 14.5px; color: #8A8478; margin: 6px 0 14px;">{{ c.tagline }}</div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 16px;">{{ c.priceFrom }}</span>
+              <span style="font-size: 13px; font-weight: 600; color: #00755A;">Ver modelos →</span>
+            </div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- featured -->
+  <section class="rt-featured-section" style="background: #F1EDE6; margin-top: 56px;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px;">
+      <div class="rt-sec-header" style="display: flex; align-items: end; justify-content: space-between; margin-bottom: 34px;">
+        <div>
+          <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #00755A; margin-bottom: 10px;">Más elegidos</div>
+          <h2 style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 38px; letter-spacing: -0.02em; margin: 0;">Modelos destacados</h2>
+        </div>
+      </div>
+      <div class="rt-featured-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <sc-for list="{{ featured }}" as="p" hint-placeholder-count="3">
+          <div style="background: #fff; border-radius: 18px; overflow: hidden; border: 1px solid #E4DDD0; display: flex; flex-direction: column;">
+            <div style="position: relative;">
+              <img src="{{ p.img }}" alt="{{ p.name }}" style="width: 100%; height: 240px; display: block; object-fit: cover;">
+              <span style="position: absolute; top: 14px; left: 14px; background: #17150F; color: #FBFAF7; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 100px; white-space: nowrap;">Envío gratis</span>
+            </div>
+            <div style="padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1;">
+              <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #00755A; font-weight: 700; margin-bottom: 6px;">{{ p.cat }}</div>
+              <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.01em;">{{ p.name }}</div>
+              <div style="font-size: 14px; color: #8A8478; margin: 6px 0 16px; line-height: 1.45; flex: 1;">{{ p.desc }}</div>
+              <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 24px; letter-spacing: -0.01em; margin-bottom: 16px;">{{ p.price }}</div>
+              <a href="{{ p.waUrl }}" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: 9px; background: #25D366; color: #0A2E16; padding: 13px 20px; border-radius: 100px; font-size: 15px; font-weight: 700;" style-hover="filter:brightness(0.95)">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.992zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.693.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
+                Pedir presupuesto
+              </a>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- how it works -->
+  <section class="rt-steps-section" style="max-width: 1240px; margin: 0 auto; padding: 88px 32px 40px;">
+    <div style="text-align: center; margin-bottom: 48px;">
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #00755A; margin-bottom: 10px;">Cómo funciona</div>
+      <h2 style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 38px; letter-spacing: -0.02em; margin: 0;">De la consulta a tu llave</h2>
+    </div>
+    <div class="rt-steps-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div>
+          <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 15px; color: #00755A; letter-spacing: 0.1em;">{{ s.num }}</div>
+          <div style="height: 1px; background: #E7E1D6; margin: 14px 0 18px;"></div>
+          <div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 19px; margin-bottom: 8px;">{{ s.title }}</div>
+          <div style="font-size: 14.5px; color: #8A8478; line-height: 1.5;">{{ s.text }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- showroom -->
+  <section id="showroom" class="rt-showroom-section" style="max-width: 1240px; margin: 0 auto; padding: 64px 32px;">
+    <div class="rt-showroom-grid" style="background: #17150F; border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr;">
+      <div class="rt-showroom-left" style="padding: 56px 48px; color: #FBFAF7;">
+        <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #C9AE63; margin-bottom: 16px;">Visitanos</div>
+        <h2 style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 36px; letter-spacing: -0.02em; margin: 0 0 20px; line-height: 1.05;">Conocé los modelos en nuestro showroom</h2>
+        <p style="font-size: 16px; color: #B8B2A6; line-height: 1.55; margin: 0 0 28px;">Recorré los contenedores terminados y resolvé todas tus dudas con nuestro equipo. Te esperamos.</p>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9AE63" stroke-width="2" style="flex-shrink:0;margin-top:1px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span style="font-size: 15.5px; line-height: 1.45;">Juan B. Justo 2805 (esq. Fornabaio)<br>Quilmes, Provincia de Buenos Aires</span>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9AE63" stroke-width="2" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span style="font-size: 15.5px;">Lunes a Sábados · 9 a 20 hs</span>
+          </div>
+        </div>
+        <a href="https://wa.me/5491123958790?text=Hola%2C%20quiero%20coordinar%20una%20visita%20al%20showroom" target="_blank" style="display: inline-flex; align-items: center; gap: 9px; background: #25D366; color: #0A2E16; padding: 14px 24px; border-radius: 100px; font-size: 15px; font-weight: 700; margin-top: 32px;" style-hover="filter:brightness(0.95)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.992z"/></svg>
+          Coordinar visita
+        </a>
+      </div>
+      <div class="rt-showroom-right" style="min-height: 420px;">
+        <iframe src="https://maps.google.com/maps?q=Juan%20B.%20Justo%202805%20Quilmes%20Buenos%20Aires&t=&z=15&ie=UTF8&iwloc=&output=embed" style="width: 100%; height: 100%; border: 0; display: block; filter: grayscale(0.2);" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="rt-faq-section" style="max-width: 880px; margin: 0 auto; padding: 56px 32px 80px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #00755A; margin-bottom: 10px;">Preguntas frecuentes</div>
+      <h2 class="rt-faq-title" style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 38px; letter-spacing: -0.02em; margin: 0;">Lo que más nos consultan</h2>
+    </div>
+    <div style="border-top: 1px solid #E7E1D6;">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <div style="border-bottom: 1px solid #E7E1D6;">
+          <button onClick="{{ f.toggle }}" style="width: 100%; background: none; border: none; padding: 24px 4px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-align: left; font-family: 'Hanken Grotesk', sans-serif;">
+            <span style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 18.5px; color: #17150F; letter-spacing: -0.01em;">{{ f.q }}</span>
+            <span style="font-size: 26px; color: #00755A; line-height: 1; transform: {{ f.rot }}; transition: transform 0.25s;">+</span>
+          </button>
+          <div style="max-height: {{ f.mh }}; overflow: hidden; transition: max-height 0.3s ease;">
+            <p style="font-size: 16px; line-height: 1.6; color: #6B655A; margin: 0; padding: 0 4px 26px;">{{ f.a }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="rt-cta-section" style="background: #00755A;">
+    <div class="rt-cta-container" style="max-width: 1240px; margin: 0 auto; padding: 64px 32px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+      <div>
+        <h2 style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 36px; letter-spacing: -0.02em; margin: 0 0 8px; color: #FBFAF7;">¿Listo para tu Tainer?</h2>
+        <p style="font-size: 17px; color: #B9E0D2; margin: 0;">Contanos qué buscás y armamos tu presupuesto en minutos.</p>
+      </div>
+      <a href="Contacto.dc.html" style="display: inline-flex; align-items: center; gap: 10px; background: #FBFAF7; color: #17150F; padding: 17px 32px; border-radius: 100px; font-size: 16px; font-weight: 700;" style-hover="background:#17150F;color:#FBFAF7">
+        Pedir presupuesto
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="rt-footer" style="background: #17150F; color: #B8B2A6;">
+    <div class="rt-footer-grid" style="max-width: 1240px; margin: 0 auto; padding: 64px 32px 40px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px;">
+      <div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px;">
+          <span style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; color: #FBFAF7;">REAL TAINER</span>
+          <span style="width: 6px; height: 6px; border-radius: 50%; background: #B59B4A; display: inline-block;"></span>
+        </div>
+        <p style="font-size: 14.5px; line-height: 1.55; max-width: 280px; margin: 0;">Casas contenedor ágiles, ecológicas y sin complicaciones de obra. Proyectos personalizados, llave en mano.</p>
+      </div>
+      <div>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #FBFAF7; margin-bottom: 16px;">Navegación</div>
+        <div style="display: flex; flex-direction: column; gap: 11px; font-size: 14.5px;">
+          <a href="Inicio.dc.html" style-hover="color:#FBFAF7">Inicio</a>
+          <a href="Productos.dc.html" style-hover="color:#FBFAF7">Productos</a>
+          <a href="#showroom" style-hover="color:#FBFAF7">Showroom</a>
+          <a href="Contacto.dc.html" style-hover="color:#FBFAF7">Contacto</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #FBFAF7; margin-bottom: 16px;">Contacto</div>
+        <div style="display: flex; flex-direction: column; gap: 11px; font-size: 14.5px;">
+          <a href="https://wa.me/5491123958790" target="_blank" style-hover="color:#FBFAF7">WhatsApp +54 9 11 2395-8790</a>
+          <span>Juan B. Justo 2805, Quilmes</span>
+          <span>Lun a Sáb · 9 a 20 hs</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #FBFAF7; margin-bottom: 16px;">Seguinos</div>
+        <div style="display: flex; flex-direction: column; gap: 11px; font-size: 14.5px;">
+          <a href="https://instagram.com/realtainer" target="_blank" style-hover="color:#FBFAF7">Instagram @realtainer</a>
+          <a href="https://www.facebook.com/realtainer" target="_blank" style-hover="color:#FBFAF7">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #2E2B24;">
+      <div style="max-width: 1240px; margin: 0 auto; padding: 22px 32px; font-size: 13px; color: #6B6457;">© 2026 Real Tainer. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { open: 0 };
+
+  wa(name) {
+    const msg = `Hola Real Tainer 👋 Quiero un presupuesto del *${name}*. ¿Me pasan más información?`;
+    return `https://wa.me/5491123958790?text=${encodeURIComponent(msg)}`;
+  }
+
+  renderVals() {
+    const open = this.state.open;
+    const faqData = [
+      { q: '¿Cuánto tarda la entrega?', a: 'Una vez confirmado el modelo, el plazo de fabricación y entrega ronda las 4 a 8 semanas según el grado de personalización. Coordinamos la logística a todo el país.' },
+      { q: '¿El envío tiene costo?', a: 'Todos nuestros modelos publicados incluyen envío gratis. Al pedir tu presupuesto te confirmamos la fecha estimada de entrega para tu localidad.' },
+      { q: '¿Las casas vienen terminadas?', a: 'Sí, se entregan llave en mano: aislación, instalación eléctrica, revestimientos, aberturas y terminaciones. Los modelos Premium suman mejores materiales y equipamiento.' },
+      { q: '¿Necesito permiso de obra?', a: 'Al ser una estructura prefabricada y transportable, los trámites son mucho más simples que una obra tradicional. Cada municipio tiene su normativa; te orientamos según tu caso.' },
+      { q: '¿Puedo personalizar el diseño?', a: 'Totalmente. Trabajamos proyectos personalizados: distribución, aberturas, revestimientos y combinaciones de módulos. Contanos tu idea y la hacemos posible.' },
+    ];
+    const faqs = faqData.map((f, i) => ({
+      q: f.q, a: f.a,
+      rot: open === i ? 'rotate(45deg)' : 'rotate(0deg)',
+      mh: open === i ? '260px' : '0px',
+      toggle: () => this.setState({ open: open === i ? -1 : i }),
+    }));
+
+    return {
+      benefits: [
+        { icon: React.createElement('svg', { width: 26, height: 26, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8 }, React.createElement('path', { d: 'M13 2L3 14h7l-1 8 10-12h-7l1-8z' })), title: 'Construcción ágil', text: 'Listo en semanas, no en años.' },
+        { icon: React.createElement('svg', { width: 26, height: 26, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8 }, React.createElement('path', { d: 'M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z' }), React.createElement('path', { d: 'M9 9c1.5-2 4.5-2 6 0' })), title: 'Ecológica', text: 'Reutilizamos contenedores reales.' },
+        { icon: React.createElement('svg', { width: 26, height: 26, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8 }, React.createElement('path', { d: 'M3 21h18M5 21V7l8-4v18M19 21V11l-6-3' })), title: 'Sin obra', text: 'Sin escombros ni demoras.' },
+        { icon: React.createElement('svg', { width: 26, height: 26, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8 }, React.createElement('path', { d: 'M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z' })), title: 'Llave en mano', text: 'Te la entregamos terminada.' },
+      ],
+      categories: [
+        { name: 'Casas', tagline: 'Para habitar todo el año, de 30 a 60 m².', priceFrom: 'desde USD $22.500', slotId: 'rt-cat-casas', img: 'https://dcdn-us.mitiendanube.com/stores/002/165/507/products/30-frente-0c8167076b5197121d17187667797991-1024-1024.webp', ph: 'Foto categoría Casas', href: 'Productos.dc.html' },
+        { name: 'Quincho / Oficina', tagline: 'Espacios de trabajo y disfrute, 15 a 30 m².', priceFrom: 'desde USD $12.900', slotId: 'rt-cat-quincho', img: 'https://dcdn-us.mitiendanube.com/stores/002/165/507/products/15-office-frente-028bb459576c6bda0b17187682827370-1024-1024.webp', ph: 'Foto categoría Quincho/Oficina', href: 'Productos.dc.html' },
+        { name: 'Premium', tagline: 'Mejores materiales y terminaciones.', priceFrom: 'desde USD $27.900', slotId: 'rt-cat-premium', img: 'https://dcdn-us.mitiendanube.com/stores/002/165/507/products/60-interior-2-6e5f8345e8892f614617187647612939-1024-1024.webp', ph: 'Foto categoría Premium', href: 'Productos.dc.html' },
+      ],
+      featured: [
+        { name: 'Tainer 60 m² Premium', cat: 'Premium', desc: 'Nuestro modelo más completo: amplio, equipado y con las mejores terminaciones.', price: 'desde USD $47.900', slotId: 'rt-feat-1', img: 'https://dcdn-us.mitiendanube.com/stores/002/165/507/products/60-interior-3-2067716cd4c9c4ce0f17187647663225-1024-1024.webp', ph: 'Foto Tainer 60 Premium', waUrl: this.wa('Tainer 60 m2 Premium') },
+        { name: 'Tainer 30 m² Premium', cat: 'Premium · Casa', desc: 'El equilibrio justo entre espacio y precio, con terminación Premium.', price: 'desde USD $27.900', slotId: 'rt-feat-2', img: 'https://dcdn-us.mitiendanube.com/stores/002/165/507/products/30-interior-3737a3376d1640bf6517187667790347-1024-1024.webp', ph: 'Foto Tainer 30 Premium', waUrl: this.wa('Tainer 30 m2 Premium') },
+        { name: 'Tainer 15 m² Oficina', cat: 'Oficina', desc: 'Ideal para home office, consultorio o estudio. Listo para instalar.', price: 'desde USD $12.900', slotId: 'rt-feat-3', img: 'https://dcdn-us.mitiendanube.com/stores/002/165/507/products/15-office-interior-6e96924b1ab0e5e57a17187682818302-1024-1024.webp', ph: 'Foto Tainer 15 Oficina', waUrl: this.wa('Tainer 15 m2 Oficina') },
+      ],
+      steps: [
+        { num: '01', title: 'Consultá', text: 'Elegí un modelo o contanos tu proyecto por WhatsApp o el formulario.' },
+        { num: '02', title: 'Presupuesto', text: 'Te enviamos precio cerrado, plazos y detalle de terminaciones.' },
+        { num: '03', title: 'Fabricación', text: 'Producimos tu Tainer con materiales de primeras marcas.' },
+        { num: '04', title: 'Entrega', text: 'Lo llevamos e instalamos en tu terreno, listo para habitar.' },
+      ],
+      faqs,
+    };
+  }
+}
+</script>
+</body>
+</html>
